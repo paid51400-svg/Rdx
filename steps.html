@@ -4,111 +4,782 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Get a Free Key | Unknown Modz</title>
+
     <style>
-        :root { --bg: #000000; --card: #121212; --text: #ffffff; --accent: #ffffff; --warning-bg: #1a1505; --warning-border: #3d3002; --warning-text: #eec136; }
-        
-        body { 
-            background-color: var(--bg); 
-            color: var(--text); 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            min-height: 100vh; 
-            margin: 0; 
-            padding: 20px;
+        :root {
+            --bg: #000000;
+            --card: #121212;
+            --text: #ffffff;
+            --muted: #999999;
+            --border: #2b2b2b;
+            --accent: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
             box-sizing: border-box;
         }
 
-        .container { 
-            width: 100%; 
-            max-width: 400px; 
-            text-align: center; 
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: Arial, Helvetica, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
         }
 
-        /* --- LOGO FIX FOR PC & MOBILE --- */
-        .key-icon { 
-            background: #1a1a1a; 
-            width: 80px; 
-            height: 80px; 
-            border-radius: 50%; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            margin: 0 auto 15px; 
-            border: 1px solid #333; 
-            overflow: hidden;
-            box-shadow: 0 0 20px rgba(255,255,255,0.05);
-        }
-
-        .key-icon img {
+        .container {
             width: 100%;
-            height: 100%;
-            object-fit: cover; 
+            max-width: 430px;
         }
 
-        @media (min-width: 768px) {
-            .container { max-width: 480px; }
-            .key-icon { width: 110px; height: 110px; } 
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 30px 24px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
         }
 
-        h1 { font-size: 28px; font-weight: bold; margin-bottom: 10px; }
-        .subtitle { color: #888; font-size: 14px; margin-bottom: 30px; }
-        
-        .progress-container { display: flex; align-items: center; justify-content: space-between; margin-bottom: 25px; }
-        .step-indicator { display: flex; align-items: center; gap: 8px; font-size: 13px; color: #888; }
-        .circle { width: 22px; height: 22px; border: 2px solid #333; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 10px; }
-        .circle.active { border-color: var(--text); color: var(--text); }
-        .line { flex-grow: 1; height: 2px; background: #222; margin: 0 15px; }
+        .logo {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            border-radius: 16px;
+            margin-bottom: 20px;
+        }
 
-        .card { background: var(--card); border: 1px solid #222; border-radius: 24px; padding: 30px; text-align: left; box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
-        h2 { font-size: 20px; margin-bottom: 15px; }
-        .card-p { color: #888; font-size: 15px; line-height: 1.5; margin-bottom: 25px; }
+        h1 {
+            font-size: 27px;
+            margin-bottom: 10px;
+        }
 
-        .warning { background: var(--warning-bg); border: 1px solid var(--warning-border); border-radius: 12px; padding: 15px; display: flex; gap: 12px; margin-bottom: 30px; }
-        .warning-icon { color: var(--warning-text); font-size: 18px; }
-        .warning-title { color: var(--warning-text); font-weight: bold; font-size: 14px; }
-        .warning-text { color: #8a701f; font-size: 12px; }
+        .subtitle {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
 
-        .btn { width: 100%; padding: 16px; background: #ffffff; color: #000; border: none; border-radius: 14px; font-size: 16px; font-weight: bold; cursor: pointer; transition: 0.3s ease; }
-        .btn:hover { transform: scale(1.02); background: #00ff88; }
+        .step {
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 14px;
+            margin-bottom: 20px;
+            font-size: 13px;
+            color: #bbbbbb;
+        }
+
+        .step strong {
+            color: #ffffff;
+        }
+
+        .notice {
+            background: #0d0d0d;
+            border: 1px solid #292929;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 22px;
+            text-align: left;
+            font-size: 13px;
+            line-height: 1.6;
+            color: #bdbdbd;
+        }
+
+        .notice strong {
+            color: #ffffff;
+        }
+
+        .btn {
+            width: 100%;
+            border: none;
+            outline: none;
+            background: #ffffff;
+            color: #000000;
+            padding: 15px;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+            opacity: 0.9;
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .footer {
+            margin-top: 18px;
+            color: #666666;
+            font-size: 11px;
+        }
+
+        .loading {
+            display: none;
+            margin-top: 15px;
+            color: #aaaaaa;
+            font-size: 12px;
+        }
+
+        .error {
+            display: none;
+            margin-top: 15px;
+            color: #ff7777;
+            font-size: 12px;
+            line-height: 1.5;
+        }
     </style>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
 </head>
+
 <body>
 
 <div class="container">
-    <div class="key-icon">
-        <img src="./assets/logo.png" alt="UKM">
-    </div>
-    <h1>Get a Free Key</h1>
-    <p class="subtitle">Complete the step below to receive your access key.</p>
-
-    <div class="progress-container">
-        <div class="step-indicator">
-            <div class="circle active">1</div>
-            <span>Step 1 of 1</span>
-        </div>
-        <div class="line"></div>
-        <div class="circle" style="background: #111;"></div>
-    </div>
-
     <div class="card">
-        <h2>First Step</h2>
-        <p class="card-p">To continue, click the button below to complete the first step. You will be redirected and then return to this page once finished.</p>
 
-        <div class="warning">
-            <div class="warning-icon">⚠️</div>
-            <div>
-                <div class="warning-title">Security Notice</div>
-                <div class="warning-text">The use of bots or any kind of automation will result in your key being banned.</div>
-            </div>
+        <img
+            src="./assets/logo.png"
+            alt="Unknown Modz"
+            class="logo"
+        >
+
+        <h1>Get a Free Key</h1>
+
+        <div class="subtitle">
+            Complete the required step below to continue.
         </div>
 
-        <button class="btn" onclick="location.href='https://rdxmods.github.io/Rdx'">
+        <div class="step">
+            <strong>Step 1 of 1</strong><br>
+            Generate your access key
+        </div>
+
+        <div class="notice">
+            <strong>Security Notice</strong><br>
+            Please use the official link and do not refresh the page while the
+            shortener is loading.
+        </div>
+
+        <button class="btn" id="continueBtn" onclick="openSavedShortener()">
             Continue to Step ➜
         </button>
+
+        <div id="loading" class="loading">
+            Generating short link...
+        </div>
+
+        <div id="error" class="error"></div>
+
+        <div class="footer">
+            Secure Key System
+        </div>
+
     </div>
 </div>
+
+<script>
+
+/* =========================================================
+   FIREBASE
+   ========================================================= */
+
+const firebaseConfig = {
+    apiKey: "AIzaSyB_LaFUz-1QB_k4mEiODndjqdcYDbPFr2M",
+    databaseURL: "https://config-v9-default-rtdb.firebaseio.com",
+    projectId: "config-v9"
+};
+
+if (!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
+}
+
+const db = firebase.database();
+
+
+/* =========================================================
+   FALLBACK DESTINATION
+   ========================================================= */
+
+const DEFAULT_LINK = "https://rdxmods.github.io/Rdx";
+
+
+/* =========================================================
+   SETUP ORDER
+   ========================================================= */
+
+const SETUP_PATHS = [
+    "settings/shortener",
+    "settings/setup2Shortener",
+    "settings/setup3Shortener"
+];
+
+
+/* =========================================================
+   UI
+   ========================================================= */
+
+function setLoading(status) {
+
+    const loading = document.getElementById("loading");
+    const button = document.getElementById("continueBtn");
+
+    if (loading) {
+        loading.style.display = status ? "block" : "none";
+    }
+
+    if (button) {
+        button.disabled = status;
+        button.style.opacity = status ? "0.6" : "1";
+    }
+}
+
+
+function showError(message) {
+
+    const error = document.getElementById("error");
+
+    if (!error) return;
+
+    error.textContent = message || "";
+    error.style.display = message ? "block" : "none";
+}
+
+
+/* =========================================================
+   FIREBASE SETUP
+   ========================================================= */
+
+async function getSetup(path) {
+
+    try {
+
+        const snapshot = await db.ref(path).once("value");
+
+        if (!snapshot.exists()) {
+            return null;
+        }
+
+        const data = snapshot.val();
+
+        if (!data || typeof data !== "object") {
+            return null;
+        }
+
+        return data;
+
+    } catch (error) {
+
+        console.error("Firebase error:", error);
+
+        return null;
+    }
+}
+
+
+/* =========================================================
+   ENABLED CHECK
+   ========================================================= */
+
+function isEnabled(value) {
+
+    return (
+        value === true ||
+        value === "true" ||
+        value === 1 ||
+        value === "1"
+    );
+}
+
+
+/* =========================================================
+   FIND ACTIVE SHORTENER
+   SETUP 1 -> SETUP 2 -> SETUP 3
+   ========================================================= */
+
+async function findActiveSetup() {
+
+    for (const path of SETUP_PATHS) {
+
+        const setup = await getSetup(path);
+
+        if (!setup) {
+            continue;
+        }
+
+        if (!isEnabled(setup.enabled)) {
+            continue;
+        }
+
+        const apiUrl =
+            setup.apiUrl ||
+            setup.apiURL ||
+            setup.url ||
+            "";
+
+        const apiKey =
+            setup.apiKey ||
+            setup.APIKey ||
+            setup.key ||
+            "";
+
+        if (!apiUrl || !apiKey) {
+            continue;
+        }
+
+        return {
+            path: path,
+            apiUrl: String(apiUrl).trim(),
+            apiKey: String(apiKey).trim(),
+            setup: setup
+        };
+    }
+
+    return null;
+}
+
+
+/* =========================================================
+   DESTINATION URL
+   ========================================================= */
+
+function getDestination() {
+
+    try {
+
+        const params = new URLSearchParams(
+            window.location.search
+        );
+
+        const possible = [
+            params.get("url"),
+            params.get("link"),
+            params.get("target"),
+            params.get("destination")
+        ];
+
+        for (const value of possible) {
+
+            if (
+                value &&
+                /^https?:\/\//i.test(value)
+            ) {
+                return value;
+            }
+        }
+
+    } catch (error) {
+
+        console.error(
+            "Destination error:",
+            error
+        );
+    }
+
+    return DEFAULT_LINK;
+}
+
+
+/* =========================================================
+   NORMALIZE API URL
+   ========================================================= */
+
+function normalizeApiUrl(url) {
+
+    url = String(url || "").trim();
+
+    if (!url) {
+        return "";
+    }
+
+    if (!/^https?:\/\//i.test(url)) {
+        url = "https://" + url;
+    }
+
+    return url;
+}
+
+
+/* =========================================================
+   BUILD REQUEST URL
+   SUPPORTS:
+
+   /st?api=
+   /api?api=
+   /api
+   /st
+   ========================================================= */
+
+function buildRequestUrl(apiUrl, apiKey, destination) {
+
+    apiUrl = normalizeApiUrl(apiUrl);
+
+    if (!apiUrl || !apiKey) {
+        return "";
+    }
+
+    const encodedKey =
+        encodeURIComponent(apiKey);
+
+    const encodedDestination =
+        encodeURIComponent(destination);
+
+    /*
+     * /st?api=
+     */
+    if (/\/st\?api=$/i.test(apiUrl)) {
+
+        return (
+            apiUrl +
+            encodedKey +
+            "&url=" +
+            encodedDestination
+        );
+    }
+
+
+    /*
+     * /api?api=
+     */
+    if (/\/api\?api=$/i.test(apiUrl)) {
+
+        return (
+            apiUrl +
+            encodedKey +
+            "&url=" +
+            encodedDestination
+        );
+    }
+
+
+    /*
+     * Existing api parameter
+     */
+    if (/[?&]api=/i.test(apiUrl)) {
+
+        const separator =
+            apiUrl.indexOf("?") === -1
+                ? "?"
+                : "&";
+
+        return (
+            apiUrl +
+            separator +
+            "url=" +
+            encodedDestination
+        );
+    }
+
+
+    /*
+     * Normal endpoint:
+     *
+     * /api
+     * /st
+     */
+
+    const separator =
+        apiUrl.indexOf("?") === -1
+            ? "?"
+            : "&";
+
+    return (
+        apiUrl +
+        separator +
+        "api=" +
+        encodedKey +
+        "&url=" +
+        encodedDestination
+    );
+}
+
+
+/* =========================================================
+   EXTRACT SHORT URL
+   Supports API responses:
+
+   shortUrl
+   short_url
+   shortLink
+   link
+   ========================================================= */
+
+function extractShortUrl(data) {
+
+    if (!data) {
+        return "";
+    }
+
+    const possible = [
+        data.shortUrl,
+        data.short_url,
+        data.shortLink,
+        data.short_link,
+        data.link
+    ];
+
+    for (const value of possible) {
+
+        if (
+            typeof value === "string" &&
+            /^https?:\/\//i.test(value)
+        ) {
+            return value;
+        }
+    }
+
+    return "";
+}
+
+
+/* =========================================================
+   API REQUEST
+   ========================================================= */
+
+async function requestShortUrl(
+    requestUrl
+) {
+
+    console.log(
+        "Requesting:",
+        requestUrl
+    );
+
+    const response = await fetch(
+        requestUrl,
+        {
+            method: "GET",
+            mode: "cors",
+            cache: "no-store",
+            redirect: "follow"
+        }
+    );
+
+    if (!response.ok) {
+
+        throw new Error(
+            "API HTTP error: " +
+            response.status
+        );
+    }
+
+    const text =
+        await response.text();
+
+    console.log(
+        "API response:",
+        text
+    );
+
+    let data;
+
+    try {
+
+        data = JSON.parse(text);
+
+    } catch (error) {
+
+        /*
+         * Some shortener APIs may return
+         * the short URL directly.
+         */
+
+        if (
+            /^https?:\/\//i.test(
+                text.trim()
+            )
+        ) {
+            return text.trim();
+        }
+
+        throw new Error(
+            "Invalid API response."
+        );
+    }
+
+    /*
+     * API returned success:false
+     */
+    if (
+        data.success === false
+    ) {
+
+        throw new Error(
+            data.error ||
+            "Shortener API returned an error."
+        );
+    }
+
+    const shortUrl =
+        extractShortUrl(data);
+
+    if (!shortUrl) {
+
+        throw new Error(
+            "Short URL was not found in API response."
+        );
+    }
+
+    return shortUrl;
+}
+
+
+/* =========================================================
+   MAIN
+   ========================================================= */
+
+async function openSavedShortener() {
+
+    if (window._shortenerOpening) {
+        return;
+    }
+
+    window._shortenerOpening = true;
+
+    showError("");
+    setLoading(true);
+
+    try {
+
+        /*
+         * Get destination
+         */
+        const destination =
+            getDestination();
+
+
+        /*
+         * Find enabled setup
+         */
+        const active =
+            await findActiveSetup();
+
+
+        if (!active) {
+
+            /*
+             * No enabled shortener:
+             * use original fallback.
+             */
+            window.location.href =
+                DEFAULT_LINK;
+
+            return;
+        }
+
+
+        console.log(
+            "Active setup:",
+            active.path
+        );
+
+        console.log(
+            "API URL:",
+            active.apiUrl
+        );
+
+
+        /*
+         * Build API request.
+         */
+        const requestUrl =
+            buildRequestUrl(
+                active.apiUrl,
+                active.apiKey,
+                destination
+            );
+
+
+        if (!requestUrl) {
+
+            throw new Error(
+                "Invalid API URL or API key."
+            );
+        }
+
+
+        /*
+         * Call API.
+         *
+         * Example:
+         *
+         * /st?api=KEY&url=DESTINATION
+         *
+         * OR
+         *
+         * /api?api=KEY&url=DESTINATION
+         */
+        const shortUrl =
+            await requestShortUrl(
+                requestUrl
+            );
+
+
+        console.log(
+            "Generated short URL:",
+            shortUrl
+        );
+
+
+        /*
+         * IMPORTANT:
+         * Redirect to returned shortUrl,
+         * NOT directly to API endpoint.
+         */
+        window.location.replace(
+            shortUrl
+        );
+
+    } catch (error) {
+
+        console.error(
+            "Shortener error:",
+            error
+        );
+
+        setLoading(false);
+
+        showError(
+            error.message ||
+            "Unable to generate short link. Please try again."
+        );
+
+        window._shortenerOpening = false;
+    }
+}
+
+
+/* =========================================================
+   DIRECT LINK HELPER
+   ========================================================= */
+
+function openLink(url) {
+
+    if (!url) {
+        return;
+    }
+
+    url = String(url).trim();
+
+    if (!/^https?:\/\//i.test(url)) {
+        url = "https://" + url;
+    }
+
+    window.location.href = url;
+}
+
+</script>
 
 </body>
 </html>
