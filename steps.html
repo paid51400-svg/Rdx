@@ -6,140 +6,177 @@
     <title>Get a Free Key | Unknown Modz</title>
 
     <style>
-        :root {
-            --bg: #000000;
-            --card: #121212;
-            --text: #ffffff;
-            --muted: #999999;
-            --border: #2b2b2b;
-            --accent: #ffffff;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        :root { --bg: #000000; --card: #121212; --text: #ffffff; --accent: #ffffff; --warning-bg: #1a1505; --warning-border: #3d3002; --warning-text: #eec136; }
 
         body {
-            background: var(--bg);
+            background-color: var(--bg);
             color: var(--text);
-            font-family: Arial, Helvetica, sans-serif;
-            min-height: 100vh;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             display: flex;
-            align-items: center;
             justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
             padding: 20px;
+            box-sizing: border-box;
         }
 
         .container {
             width: 100%;
-            max-width: 430px;
-        }
-
-        .card {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 18px;
-            padding: 30px 24px;
+            max-width: 400px;
             text-align: center;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
         }
 
-        .logo {
+        .key-icon {
+            background: #1a1a1a;
             width: 80px;
             height: 80px;
-            object-fit: contain;
-            border-radius: 16px;
-            margin-bottom: 20px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 15px;
+            border: 1px solid #333;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(255,255,255,0.05);
+        }
+
+        .key-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @media (min-width: 768px) {
+            .container { max-width: 480px; }
+            .key-icon { width: 110px; height: 110px; }
         }
 
         h1 {
-            font-size: 27px;
+            font-size: 28px;
+            font-weight: bold;
             margin-bottom: 10px;
         }
 
         .subtitle {
-            color: var(--muted);
+            color: #888;
             font-size: 14px;
-            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .progress-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
             margin-bottom: 25px;
         }
 
-        .step {
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 14px;
-            margin-bottom: 20px;
+        .step-indicator {
+            display: flex;
+            align-items: center;
+            gap: 8px;
             font-size: 13px;
-            color: #bbbbbb;
+            color: #888;
         }
 
-        .step strong {
-            color: #ffffff;
+        .circle {
+            width: 22px;
+            height: 22px;
+            border: 2px solid #333;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 10px;
         }
 
-        .notice {
-            background: #0d0d0d;
-            border: 1px solid #292929;
+        .circle.active {
+            border-color: var(--text);
+            color: var(--text);
+        }
+
+        .line {
+            flex-grow: 1;
+            height: 2px;
+            background: #222;
+            margin: 0 15px;
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid #222;
+            border-radius: 24px;
+            padding: 30px;
+            text-align: left;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+
+        h2 {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .card-p {
+            color: #888;
+            font-size: 15px;
+            line-height: 1.5;
+            margin-bottom: 25px;
+        }
+
+        .warning {
+            background: var(--warning-bg);
+            border: 1px solid var(--warning-border);
             border-radius: 12px;
             padding: 15px;
-            margin-bottom: 22px;
-            text-align: left;
-            font-size: 13px;
-            line-height: 1.6;
-            color: #bdbdbd;
+            display: flex;
+            gap: 12px;
+            margin-bottom: 30px;
         }
 
-        .notice strong {
-            color: #ffffff;
+        .warning-icon {
+            color: var(--warning-text);
+            font-size: 18px;
+        }
+
+        .warning-title {
+            color: var(--warning-text);
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .warning-text {
+            color: #8a701f;
+            font-size: 12px;
         }
 
         .btn {
             width: 100%;
-            border: none;
-            outline: none;
+            padding: 16px;
             background: #ffffff;
-            color: #000000;
-            padding: 15px;
-            border-radius: 12px;
-            font-size: 15px;
+            color: #000;
+            border: none;
+            border-radius: 14px;
+            font-size: 16px;
             font-weight: bold;
             cursor: pointer;
-            transition: 0.2s;
+            transition: 0.3s ease;
         }
 
         .btn:hover {
-            transform: translateY(-1px);
-            opacity: 0.9;
+            transform: scale(1.02);
+            background: #00ff88;
         }
 
-        .btn:active {
-            transform: scale(0.98);
-        }
-
-        .footer {
-            margin-top: 18px;
-            color: #666666;
-            font-size: 11px;
-        }
-
-        .loading {
+        .status {
             display: none;
-            margin-top: 15px;
-            color: #aaaaaa;
+            text-align: center;
+            color: #888;
             font-size: 12px;
-        }
-
-        .error {
-            display: none;
             margin-top: 15px;
-            color: #ff7777;
-            font-size: 12px;
-            line-height: 1.5;
         }
     </style>
 
+    <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
 </head>
@@ -147,141 +184,140 @@
 <body>
 
 <div class="container">
+
+    <div class="key-icon">
+        <img src="./assets/logo.png" alt="UKM">
+    </div>
+
+    <h1>Get a Free Key</h1>
+
+    <p class="subtitle">
+        Complete the step below to receive your access key.
+    </p>
+
+    <div class="progress-container">
+
+        <div class="step-indicator">
+            <div class="circle active">1</div>
+            <span>Step 1 of 1</span>
+        </div>
+
+        <div class="line"></div>
+
+        <div class="circle" style="background: #111;"></div>
+
+    </div>
+
     <div class="card">
 
-        <img
-            src="./assets/logo.png"
-            alt="Unknown Modz"
-            class="logo"
+        <h2>First Step</h2>
+
+        <p class="card-p">
+            To continue, click the button below to complete the first step.
+            You will be redirected and then return to this page once finished.
+        </p>
+
+        <div class="warning">
+
+            <div class="warning-icon">⚠️</div>
+
+            <div>
+                <div class="warning-title">
+                    Security Notice
+                </div>
+
+                <div class="warning-text">
+                    The use of bots or any kind of automation will result in your key being banned.
+                </div>
+            </div>
+
+        </div>
+
+        <button
+            class="btn"
+            id="continueBtn"
+            onclick="startShortener()"
         >
-
-        <h1>Get a Free Key</h1>
-
-        <div class="subtitle">
-            Complete the required step below to continue.
-        </div>
-
-        <div class="step">
-            <strong>Step 1 of 1</strong><br>
-            Generate your access key
-        </div>
-
-        <div class="notice">
-            <strong>Security Notice</strong><br>
-            Please use the official link and do not refresh the page while the
-            shortener is loading.
-        </div>
-
-        <button class="btn" id="continueBtn" onclick="openSavedShortener()">
             Continue to Step ➜
         </button>
 
-        <div id="loading" class="loading">
-            Generating short link...
-        </div>
-
-        <div id="error" class="error"></div>
-
-        <div class="footer">
-            Secure Key System
+        <div id="status" class="status">
+            Preparing secure link...
         </div>
 
     </div>
+
 </div>
+
 
 <script>
 
 /* =========================================================
-   FIREBASE
-   ========================================================= */
+   FIREBASE CONFIG
+========================================================= */
 
 const firebaseConfig = {
-    apiKey: "AIzaSyB_LaFUz-1QB_k4mEiODndjqdcYDbPFr2M",
-    databaseURL: "https://config-v9-default-rtdb.firebaseio.com",
-    projectId: "config-v9"
+
+    apiKey:
+        "AIzaSyB_LaFUz-1QB_k4mEiODndjqdcYDbPFr2M",
+
+    databaseURL:
+        "https://config-v9-default-rtdb.firebaseio.com",
+
+    projectId:
+        "config-v9"
+
 };
 
+
 if (!firebase.apps.length) {
-    firebase.initializeApp(firebaseConfig);
+
+    firebase.initializeApp(
+        firebaseConfig
+    );
+
 }
 
-const db = firebase.database();
+
+const db =
+    firebase.database();
 
 
 /* =========================================================
-   FALLBACK DESTINATION
-   ========================================================= */
+   GET ACTIVE SETUP
+   SETUP 1 -> SETUP 2 -> SETUP 3
+========================================================= */
 
-const DEFAULT_LINK = "https://rdxmods.github.io/Rdx";
+const setupPaths = [
 
-
-/* =========================================================
-   SETUP ORDER
-   ========================================================= */
-
-const SETUP_PATHS = [
     "settings/shortener",
+
     "settings/setup2Shortener",
+
     "settings/setup3Shortener"
+
 ];
 
 
 /* =========================================================
-   UI
-   ========================================================= */
-
-function setLoading(status) {
-
-    const loading = document.getElementById("loading");
-    const button = document.getElementById("continueBtn");
-
-    if (loading) {
-        loading.style.display = status ? "block" : "none";
-    }
-
-    if (button) {
-        button.disabled = status;
-        button.style.opacity = status ? "0.6" : "1";
-    }
-}
-
-
-function showError(message) {
-
-    const error = document.getElementById("error");
-
-    if (!error) return;
-
-    error.textContent = message || "";
-    error.style.display = message ? "block" : "none";
-}
-
-
-/* =========================================================
-   FIREBASE SETUP
-   ========================================================= */
+   GET FIREBASE DATA
+========================================================= */
 
 async function getSetup(path) {
 
     try {
 
-        const snapshot = await db.ref(path).once("value");
+        const snapshot =
+            await db.ref(path).once("value");
 
-        if (!snapshot.exists()) {
-            return null;
-        }
-
-        const data = snapshot.val();
-
-        if (!data || typeof data !== "object") {
-            return null;
-        }
-
-        return data;
+        return snapshot.val();
 
     } catch (error) {
 
-        console.error("Firebase error:", error);
+        console.error(
+            "Firebase error:",
+            error
+        );
 
         return null;
     }
@@ -290,7 +326,7 @@ async function getSetup(path) {
 
 /* =========================================================
    ENABLED CHECK
-   ========================================================= */
+========================================================= */
 
 function isEnabled(value) {
 
@@ -300,299 +336,366 @@ function isEnabled(value) {
         value === 1 ||
         value === "1"
     );
+
 }
 
 
 /* =========================================================
    FIND ACTIVE SHORTENER
-   SETUP 1 -> SETUP 2 -> SETUP 3
-   ========================================================= */
+========================================================= */
 
-async function findActiveSetup() {
+async function findActiveShortener() {
 
-    for (const path of SETUP_PATHS) {
+    for (
+        let i = 0;
+        i < setupPaths.length;
+        i++
+    ) {
 
-        const setup = await getSetup(path);
+        const data =
+            await getSetup(
+                setupPaths[i]
+            );
 
-        if (!setup) {
+
+        if (!data) {
             continue;
         }
 
-        if (!isEnabled(setup.enabled)) {
+
+        if (
+            !isEnabled(
+                data.enabled
+            )
+        ) {
             continue;
         }
+
 
         const apiUrl =
-            setup.apiUrl ||
-            setup.apiURL ||
-            setup.url ||
-            "";
+            String(
+                data.apiUrl ||
+                ""
+            ).trim();
+
 
         const apiKey =
-            setup.apiKey ||
-            setup.APIKey ||
-            setup.key ||
-            "";
+            String(
+                data.apiKey ||
+                ""
+            ).trim();
 
-        if (!apiUrl || !apiKey) {
+
+        if (
+            !apiUrl ||
+            !apiKey
+        ) {
             continue;
         }
 
+
         return {
-            path: path,
-            apiUrl: String(apiUrl).trim(),
-            apiKey: String(apiKey).trim(),
-            setup: setup
+
+            apiUrl:
+                apiUrl,
+
+            apiKey:
+                apiKey,
+
+            path:
+                setupPaths[i]
+
         };
+
     }
+
 
     return null;
+
 }
 
 
 /* =========================================================
-   DESTINATION URL
-   ========================================================= */
+   GET INDEX / KEY PAGE URL
+========================================================= */
 
-function getDestination() {
-
-    try {
-
-        const params = new URLSearchParams(
-            window.location.search
-        );
-
-        const possible = [
-            params.get("url"),
-            params.get("link"),
-            params.get("target"),
-            params.get("destination")
-        ];
-
-        for (const value of possible) {
-
-            if (
-                value &&
-                /^https?:\/\//i.test(value)
-            ) {
-                return value;
-            }
-        }
-
-    } catch (error) {
-
-        console.error(
-            "Destination error:",
-            error
-        );
-    }
-
-    return DEFAULT_LINK;
-}
-
-
-/* =========================================================
-   NORMALIZE API URL
-   ========================================================= */
-
-function normalizeApiUrl(url) {
-
-    url = String(url || "").trim();
-
-    if (!url) {
-        return "";
-    }
-
-    if (!/^https?:\/\//i.test(url)) {
-        url = "https://" + url;
-    }
-
-    return url;
-}
-
-
-/* =========================================================
-   BUILD REQUEST URL
-   SUPPORTS:
-
-   /st?api=
-   /api?api=
-   /api
-   /st
-   ========================================================= */
-
-function buildRequestUrl(apiUrl, apiKey, destination) {
-
-    apiUrl = normalizeApiUrl(apiUrl);
-
-    if (!apiUrl || !apiKey) {
-        return "";
-    }
-
-    const encodedKey =
-        encodeURIComponent(apiKey);
-
-    const encodedDestination =
-        encodeURIComponent(destination);
+function getKeyPageUrl() {
 
     /*
+     * Current steps.html location.
+     *
+     * Example:
+     * https://rdxmods.github.io/Rdx/steps.html
+     *
+     * We change it to:
+     * https://rdxmods.github.io/Rdx/index.html?source=official
+     */
+
+    const current =
+        window.location.href;
+
+
+    const base =
+        current.substring(
+            0,
+            current.lastIndexOf("/") + 1
+        );
+
+
+    return (
+        base +
+        "index.html?source=official"
+    );
+
+}
+
+
+/* =========================================================
+   BUILD API REQUEST
+========================================================= */
+
+function buildApiUrl(
+    apiUrl,
+    apiKey,
+    destination
+) {
+
+    apiUrl =
+        String(
+            apiUrl || ""
+        ).trim();
+
+
+    if (!apiUrl) {
+        throw new Error(
+            "API URL is missing."
+        );
+    }
+
+
+    if (
+        !/^https?:\/\//i.test(
+            apiUrl
+        )
+    ) {
+
+        apiUrl =
+            "https://" +
+            apiUrl;
+
+    }
+
+
+    const key =
+        encodeURIComponent(
+            apiKey
+        );
+
+
+    const url =
+        encodeURIComponent(
+            destination
+        );
+
+
+    /*
+     * SUPPORT:
+     *
      * /st?api=
      */
-    if (/\/st\?api=$/i.test(apiUrl)) {
+
+    if (
+        /[?&]api=$/i.test(
+            apiUrl
+        )
+    ) {
 
         return (
             apiUrl +
-            encodedKey +
+            key +
             "&url=" +
-            encodedDestination
+            url
         );
+
     }
 
 
     /*
+     * SUPPORT:
+     *
      * /api?api=
      */
-    if (/\/api\?api=$/i.test(apiUrl)) {
+
+    if (
+        /[?&]api=$/i.test(
+            apiUrl
+        )
+    ) {
 
         return (
             apiUrl +
-            encodedKey +
+            key +
             "&url=" +
-            encodedDestination
+            url
         );
+
     }
 
 
     /*
-     * Existing api parameter
+     * API URL already has ?api=KEY
      */
-    if (/[?&]api=/i.test(apiUrl)) {
+
+    if (
+        /[?&]api=/i.test(
+            apiUrl
+        )
+    ) {
 
         const separator =
-            apiUrl.indexOf("?") === -1
-                ? "?"
-                : "&";
+            apiUrl.includes("?")
+                ? "&"
+                : "?";
+
 
         return (
             apiUrl +
             separator +
             "url=" +
-            encodedDestination
+            url
         );
+
     }
 
 
     /*
-     * Normal endpoint:
+     * Normal:
      *
      * /api
+     *
      * /st
      */
 
     const separator =
-        apiUrl.indexOf("?") === -1
-            ? "?"
-            : "&";
+        apiUrl.includes("?")
+            ? "&"
+            : "?";
+
 
     return (
         apiUrl +
         separator +
         "api=" +
-        encodedKey +
+        key +
         "&url=" +
-        encodedDestination
+        url
     );
+
 }
 
 
 /* =========================================================
-   EXTRACT SHORT URL
-   Supports API responses:
+   GET SHORT URL FROM RESPONSE
+========================================================= */
 
-   shortUrl
-   short_url
-   shortLink
-   link
-   ========================================================= */
-
-function extractShortUrl(data) {
+function getReturnedShortUrl(data) {
 
     if (!data) {
         return "";
     }
 
+
     const possible = [
+
         data.shortUrl,
+
         data.short_url,
+
         data.shortLink,
+
         data.short_link,
+
         data.link
+
     ];
 
-    for (const value of possible) {
+
+    for (
+        let i = 0;
+        i < possible.length;
+        i++
+    ) {
+
+        const value =
+            possible[i];
+
 
         if (
             typeof value === "string" &&
-            /^https?:\/\//i.test(value)
+            /^https?:\/\//i.test(
+                value
+            )
         ) {
+
             return value;
+
         }
+
     }
 
+
     return "";
+
 }
 
 
 /* =========================================================
-   API REQUEST
-   ========================================================= */
+   CALL SHORTENER API
+========================================================= */
 
-async function requestShortUrl(
+async function createShortLink(
     requestUrl
 ) {
 
-    console.log(
-        "Requesting:",
-        requestUrl
-    );
+    const response =
+        await fetch(
+            requestUrl,
+            {
+                method: "GET",
 
-    const response = await fetch(
-        requestUrl,
-        {
-            method: "GET",
-            mode: "cors",
-            cache: "no-store",
-            redirect: "follow"
-        }
-    );
+                mode: "cors",
 
-    if (!response.ok) {
+                cache: "no-store",
 
-        throw new Error(
-            "API HTTP error: " +
-            response.status
+                redirect: "follow"
+            }
         );
-    }
+
 
     const text =
         await response.text();
 
+
     console.log(
-        "API response:",
+        "Shortener response:",
         text
     );
 
+
     let data;
+
 
     try {
 
-        data = JSON.parse(text);
+        data =
+            JSON.parse(
+                text
+            );
 
     } catch (error) {
 
         /*
-         * Some shortener APIs may return
-         * the short URL directly.
+         * If API directly returns URL.
          */
 
         if (
@@ -600,80 +703,120 @@ async function requestShortUrl(
                 text.trim()
             )
         ) {
+
             return text.trim();
+
         }
 
+
         throw new Error(
-            "Invalid API response."
+            "Invalid shortener response."
         );
+
     }
 
-    /*
-     * API returned success:false
-     */
+
     if (
         data.success === false
     ) {
 
         throw new Error(
             data.error ||
-            "Shortener API returned an error."
+            "Shortener API failed."
         );
+
     }
 
+
     const shortUrl =
-        extractShortUrl(data);
+        getReturnedShortUrl(
+            data
+        );
+
 
     if (!shortUrl) {
 
         throw new Error(
-            "Short URL was not found in API response."
+            "Short URL not found."
         );
+
     }
 
+
     return shortUrl;
+
 }
 
 
 /* =========================================================
-   MAIN
-   ========================================================= */
+   MAIN BUTTON
+========================================================= */
 
-async function openSavedShortener() {
+async function startShortener() {
 
-    if (window._shortenerOpening) {
-        return;
-    }
+    const button =
+        document.getElementById(
+            "continueBtn"
+        );
 
-    window._shortenerOpening = true;
 
-    showError("");
-    setLoading(true);
+    const status =
+        document.getElementById(
+            "status"
+        );
+
+
+    button.disabled =
+        true;
+
+
+    button.style.opacity =
+        "0.6";
+
+
+    status.style.display =
+        "block";
+
 
     try {
 
         /*
-         * Get destination
+         * IMPORTANT:
+         *
+         * Destination is the actual
+         * key-generation page.
+         *
+         * source=official is required
+         * by original index.html security.
          */
+
         const destination =
-            getDestination();
+            getKeyPageUrl();
+
+
+        console.log(
+            "Key page:",
+            destination
+        );
 
 
         /*
-         * Find enabled setup
+         * Find Setup 1 / 2 / 3
          */
+
         const active =
-            await findActiveSetup();
+            await findActiveShortener();
 
 
         if (!active) {
 
             /*
-             * No enabled shortener:
-             * use original fallback.
+             * If no setup is enabled,
+             * keep original destination.
              */
+
             window.location.href =
-                DEFAULT_LINK;
+                destination;
 
             return;
         }
@@ -684,35 +827,9 @@ async function openSavedShortener() {
             active.path
         );
 
-        console.log(
-            "API URL:",
-            active.apiUrl
-        );
-
 
         /*
-         * Build API request.
-         */
-        const requestUrl =
-            buildRequestUrl(
-                active.apiUrl,
-                active.apiKey,
-                destination
-            );
-
-
-        if (!requestUrl) {
-
-            throw new Error(
-                "Invalid API URL or API key."
-            );
-        }
-
-
-        /*
-         * Call API.
-         *
-         * Example:
+         * Build:
          *
          * /st?api=KEY&url=DESTINATION
          *
@@ -720,8 +837,31 @@ async function openSavedShortener() {
          *
          * /api?api=KEY&url=DESTINATION
          */
+
+        const requestUrl =
+            buildApiUrl(
+
+                active.apiUrl,
+
+                active.apiKey,
+
+                destination
+
+            );
+
+
+        console.log(
+            "API request:",
+            requestUrl
+        );
+
+
+        /*
+         * Call API
+         */
+
         const shortUrl =
-            await requestShortUrl(
+            await createShortLink(
                 requestUrl
             );
 
@@ -733,13 +873,12 @@ async function openSavedShortener() {
 
 
         /*
-         * IMPORTANT:
-         * Redirect to returned shortUrl,
-         * NOT directly to API endpoint.
+         * Open generated short link.
          */
-        window.location.replace(
-            shortUrl
-        );
+
+        window.location.href =
+            shortUrl;
+
 
     } catch (error) {
 
@@ -748,35 +887,20 @@ async function openSavedShortener() {
             error
         );
 
-        setLoading(false);
 
-        showError(
-            error.message ||
-            "Unable to generate short link. Please try again."
-        );
+        /*
+         * If API fails,
+         * don't break the key page.
+         *
+         * Go directly to original
+         * key-generation page.
+         */
 
-        window._shortenerOpening = false;
-    }
-}
+        window.location.href =
+            getKeyPageUrl();
 
-
-/* =========================================================
-   DIRECT LINK HELPER
-   ========================================================= */
-
-function openLink(url) {
-
-    if (!url) {
-        return;
     }
 
-    url = String(url).trim();
-
-    if (!/^https?:\/\//i.test(url)) {
-        url = "https://" + url;
-    }
-
-    window.location.href = url;
 }
 
 </script>
